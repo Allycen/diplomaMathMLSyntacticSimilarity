@@ -1,0 +1,54 @@
+\documentclass{standalone}
+\usepackage{tikz}
+\usepackage{tikz-qtree}
+\usepackage[makeroom]{cancel}
+\usetikzlibrary{fit}
+
+
+\begin{document} 
+	\begin{tikzpicture}[sibling distance=7pt]
+
+	    \node (x) at (-1.2,0.5) {$T_0$} ;
+	    \Tree [.$a$
+	            [.$b$
+	                [.$d$ ]
+	                [.$e$ ] 
+	            ] 
+	            [.$c$ ]
+	          ]
+	    \node (arrow1) at (2,-1.2) {$\Rightarrow$};
+	    
+
+	    \begin{scope}[xshift=4.2cm]
+	    \node (y) at (-1.2,0.5) {$T_0^{'}$} ;
+	    \Tree [.$a$
+	            [.$b$
+	                [.$d$ ]
+	                [.$e$ \edge[dashed];
+	                	[.$g$ ]
+	                ] 
+	            ] 
+	            [.$c$ ]
+	          ]
+	    \node (arrow2) at (2,-1.2) {$\Rightarrow$};
+	    \end{scope}
+
+
+	    \begin{scope}[xshift=8.4cm]
+	    \node (z) at (-1.2,0.5) {$T_1$} ;
+	    \Tree [.$a$
+	            [.$b$
+	                [.$d$ ]
+	                [.$e$ \edge[dashed];
+	                	[.$g$ \edge[dashed];
+	                		[.$i$ ]
+	                	]
+	                ] 
+	            ] 
+	            [.$c$ ]
+	          ]
+	    \end{scope}
+
+
+	\end{tikzpicture}
+\end{document} 

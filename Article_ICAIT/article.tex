@@ -1,0 +1,187 @@
+
+\documentclass[a4paper]{sig-alternate}
+
+\usepackage[T2A,T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[english,russian]{babel}
+
+\begin{document}
+
+  \conferenceinfo{ICAIT}{'16, Oct. 6 -- 8, 2016, Aizu-Wakamatsu, Japan.}
+  \CopyrightYear{2016}
+  \crdata{University of Aizu Press}
+
+  \title{Structural similarity based on MathML syntactic structure}
+  \subtitle{[Extended Abstract]
+  \titlenote{}}
+  
+  \numberofauthors{2} 
+  \author{
+  % 1st. author
+  \alignauthor
+  Michail Ponomarev\titlenote{}\\
+         \affaddr{Peter the Great St. Petersburg Polytechnic University}\\
+         \affaddr{29 Polytechnicheskaya st.}\\
+         \affaddr{195251 St. Petersburg Russia}\\
+         \email{ponmike92@gmail.com}
+  % 2nd. author
+  \alignauthor
+  Evgeny Pyshkin\titlenote{}\\
+         \affaddr{Unversity of Aizu}\\
+         \affaddr{Tsuruga, Ikki-machi, Aizu-Wakamatsu}\\
+         \affaddr{Fukushima, Japan 965-8580}\\
+         \email{pyshe@u-aizu.ac.jp}
+  }
+  \date{30 July 1999}
+
+  \maketitle
+
+  \begin{abstract}
+
+    In our days search engines in the Internet are an integral and necessary tools. Despite the fact that text information retrieval is well developed, searching for mathematical expressions is extremely limited. Current math retrieval systems limit themselves to exact matches ignoring structure of mathematical expression.
+
+    We propose a modification of well-known tree-overlapping algorithm which has been adoped to find stuctural similarity between to mathematical expressions represented in MathML.
+
+  \end{abstract}
+
+  % A category with the (minimum) three required fields
+  %\category{H.4}{Information Systems Applications}{Miscellaneous}
+  
+  
+  \terms{}
+
+  \keywords{}
+
+
+
+  \section{Introduction}
+  % сказать что мат. выражений в MathML - это ориентированные деревья следовательно чтобы определить синтаксическую схожесть между ними необходимо обобщить известные методы определения схожести двух ориентированных деревьев
+
+
+  \section{Methods of estimating similarity between ordered trees}
+    \subsection{Tree edit distance}
+      Tree edit distance method defines similarity (distance) between two trees as weighted number of edit operations (insert, delete, and modify) to transform one tree to another.
+      % написать кто авторы
+
+    \subsection{Tree Kernel}
+      Tree Kernel defines similarity between two trees as the number of shared subtrees. Subtree $S$ of tree $T$ is is a subgraph which consists of more than one node and except for the frontier nodes of itself and each node has the same daughter nodes as the corresponding node in $T$. 
+      % написать что есть много реализаций и указать авторов
+
+    \subsection{Subpath Set}
+      Subpath Set similarity between two trees is defined as the number of subpaths shared by the tree.
+      Given a tree, its subpaths is defined as a set of every path from the root node to leaves and their partial paths.
+      % указать авторов
+
+    \subsection{Tree Overlapping}
+    
+
+
+
+  \section{Definition of mathematical structural similarity}
+
+      % определена с помощью статьи Improving Mathemetics retrieval
+
+
+  \section{Modification of tree overlapping algorithm}
+    \subsection{Definition of similarity}
+
+      % написать первой строчкой что часть определений схоже с tree overlapping
+
+
+    \subsection{Algorithm}
+
+      When putting an arbitrary node $n_1$ of tree $T_1$ on node $n_2$ of tree $T_2$, there might be the same production rule ovelapping in $T_1$ and $T_2$. We define $N_{TO}$ as the set of pairs of such overlapping production rules when $n_1$ overlaps $n_2$. In comparison with base tree overlapping algorithm, we also include terminal nodes as if they had same production rule. 
+
+
+      $L(n_1,n_2)$ represents a set of pairs of nodes which overlap each other when outting $n_1$ on $n_2$. It is defined exactly the same as in base algorithm.
+
+      $N_{TO}(n_1,n_2)$ is defined by using $L(n_1,n_2)$ as follows:
+
+      \begin{equation}
+        \label{eq:base_Nto}
+        N_{TO}(n_1,n_2) = 
+        \left\{ (m_1,m_2) \,
+        \begin{array}{|l}
+                 m_1 \in nodes(T_1)\\
+                \land\ m_2 \in nodes(T_2)\\
+                \land\ (m_1,m_2) \in L(n_1,n_2)\\
+                \land\ PR(m_1) = PR(m_2)
+        \end{array}
+        \right\} ,
+      \end{equation}
+
+      where $nodes(T)$ is a set of nodes in tree $T$, $PR(n)$ is a production rule rooted at node $n$.
+
+      For example in Figure \ref{img:Cto}, $N_{TO}(d_1, d_2) = {(d^1,d^2),(f^1,f^2),(g^1,g^2)}$
+
+      \begin{figure*}
+        \label{img:Cto}
+        \centering
+        \epsfig{file=tikz/Cto}
+        \caption{Example of Tree-Overlapping modification algorithm}
+      \end{figure*}
+
+
+      $P_{WPR}(n_1,n_2)$ is the set of nodes which is represented as path from $(n_1,n_2)$ to the top last pair of nodes which have same number among their siblings. $P_{WPR}$ is defined as follows. Here $n_i$ and $m_i$ are nodes of tree $T_i$, $ch(n,i)$ is the $i$'th child of node $n$.
+
+      \begin{enumerate}
+        \item $(n_1, n_2) \notin P_{WPR}$
+        \item If $PR(parent(n_1)) \neq PR(parent(n_2))$\\
+              \phantom{ } $\land\ ch(parent(n_1),i) = ch(parent(n_2),i)$\\
+              \phantom{ } $\land\ ch(parent(n_1),i) = n_1$ \\
+              \phantom{ } $\land\ h(parent(n_2),i) = n_2$, \\
+              $(parent(n_1), parent(n_2)) \in P_{WPR}$
+        \item $P_{WPR}(n_1, n_2)$ includes only pairs generated by applying 2. recursively.
+      \end{enumerate}
+
+      $P_{TO}(n_1,n_2)$ is defined by using $P_{WPR}$ as follows:
+
+      \begin{equation}
+        \label{eq:new_Pto}
+        \begin{aligned}
+        P_{TO}&(n_1,n_2) = \\
+        &\left\{ (m_1,m_2) \,
+        \begin{array}{|l}
+                (p_1,p_2) \in N_{TO}(n_1,n_2)\\
+                (m_1,m_2) \in P_{WPR}(p_1,p_2),\\
+                \phantom{XXX} \textup{if} \quad top(m_1,m_2) = (n_1,n_2)
+        \end{array}
+        \right\}  
+        \end{aligned}
+      \end{equation}
+
+
+      Tree overlapping similarity $C_{TO}(n_1,n_2)$ is defined as foolows by using $N_{TO}(n_1,n_2)$ and $P_{TO}(n_1,n_2)$.
+
+      \begin{equation}
+        \label{eq:new_Cto2}
+        C_{TO}(n_1,n_2) = |N_{TO}(n_1,n_2)| + |P_{TO}(n_1,n_2)|
+      \end{equation}
+
+
+      Formula of tree overlapping similarity corresponds to basic formula by using $C_{TO}(n_1,n_2)$.
+
+        \begin{equation}
+          \label{eq:new_Sto}
+          S^{'}_{TO}(T_1, T_2) = \max_{n_1 \in nodes(T_1), n_2 \in nodes(T_2)} C^{''}_{TO} (n_1, n_2)
+        \end{equation}
+
+
+      $P_{WPR}(d_1,d_2) = P_{WPR}(f_1,f_2) = P_{WPR}(g_1,g_2) = 2$
+      $C_{TO}(d_1,d_2) = |N_{TO}(d_1,d_2)| + |P_{WPR}(d_1,d_2)| = 5$
+
+
+  \section{Experiments}
+
+
+  
+    \subsection{Data}
+    \subsection{Results}
+
+
+
+  \bibliographystyle{abbrv}
+  \bibliography{sigproc}
+  
+\end{document}
+

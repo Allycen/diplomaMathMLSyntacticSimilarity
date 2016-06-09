@@ -1,0 +1,135 @@
+\documentclass{standalone}
+\usepackage{tikz}
+\usepackage{tikz-qtree}
+\usepackage[makeroom]{cancel}
+\usepackage[T2A,T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[english,russian]{babel}
+\usetikzlibrary{fit}
+
+
+\begin{document} 
+	\begin{tikzpicture}[]
+			\newcommand{\commOffset}{2.5cm}
+			\newcommand{\laXOffset}{-1}
+			\newcommand{\laYOffset}{0.5}
+			\newcommand{\partOffsetOne}{6cm}
+			\newcommand{\partOffsetTwo}{12cm}
+			\newcommand{\SiXOffset}{4.45cm}
+			\newcommand{\SiYOffset}{-1.4cm}
+			\newcommand{\FXOffset}{1.9cm}
+			\newcommand{\FYOffset}{-3.9cm}
+
+			\node (x) at (\FXOffset, \FYOffset) {$|N_{TO}(d_1,d_2)|$ = 3};
+		    \node (x) at (\laXOffset, \laYOffset) {$T_1$};
+		    \Tree [.\node[]{$a^1$};
+		            [.$b^1$ ] 
+		            [.\node[]{$c^1$}; 
+		                [.\node[draw]{$d^1$}; 
+		                	[.\node(f)[draw]{$f^1$}; ]
+		                	[.\node[draw]{$g^1$}; ]
+		                ]
+		                [.$e_1^1$ ] 
+		            ]
+		          ]
+		    \node (ph1) at (0.6,-1.95) {\phantom{X}};
+		    \node[draw,dotted,fit=(f)(ph1)]{};
+		    \node (x) at (\SiXOffset, \SiYOffset) {\textbf{+}};
+
+	    \begin{scope}[xshift=\commOffset]
+		    \node (y) at (\laXOffset, \laYOffset) {$T_2$} ;
+		    \Tree [.\node[]{$a^2$};
+		            [.$h^2$ 
+		            	[.$k^2$ ]
+		            ] 
+		            [.\node[]{$c^2$}; 
+		                [.\node[draw]{$d^2$}; 
+		                	[.\node(f)[draw]{$f^2$}; ]
+		                	[.\node[draw]{$g^2$}; ]
+		                ]
+		                [.$j^2$ ] 
+		            ]
+		          ]
+		    \node (ph1) at (0.6,-1.95) {\phantom{X}};
+		    \node[draw,dotted,fit=(f)(ph1)]{};
+	    \end{scope}
+
+
+
+	    \begin{scope}[xshift=\partOffsetOne]
+	    	\node (x) at (\FXOffset, \FYOffset+0.1cm) {$|P_{WPR}(d_1,d_2)| = |P_{WPR}(f_1,f_2)| = $};
+	    	\node (x) at (\FXOffset, \FYOffset-0.35cm) {$= |P_{WPR}(g_1,g_2)| = 2$};
+	    	%\node (x) at (\FXOffset, \FYOffset) {$|P_{WPR}(f_1,f_2)|$};
+	    	%\node (x) at (\FXOffset, \FYOffset) {$|P_{WPR}(g_1,g_2)|$};
+		    \node (x) at (\laXOffset, \laYOffset) {$T_1$};
+		    \Tree [.\node[draw,dashed]{$a^1$};
+		            [.$b^1$ ] 
+		            [.\node[draw,dashed]{$c^1$}; 
+		                [.\node[draw,circle,inner sep=1pt,minimum size=0pt]{$d^1$}; 
+		                	[.\node(f)[draw,circle,inner sep=1pt,minimum size=0pt]{$f^1$}; ]
+		                	[.\node[draw,circle,inner sep=1pt,minimum size=0pt]{$g^1$}; ]
+		                ]
+		                [.$e_1^1$ ] 
+		            ]
+		          ]
+		          \node (x) at (\SiXOffset, \SiYOffset) {\textbf{=}};
+	    \end{scope}
+
+		\begin{scope}[xshift=\partOffsetOne + \commOffset]
+		    \node (y) at (\laXOffset, \laYOffset) {$T_2$} ;
+		    \Tree [.\node[draw,dashed]{$a^2$};
+		            [.$h^2$ 
+		            	[.$k^2$ ]
+		            ] 
+		            [.\node[draw,dashed]{$c^2$}; 
+		                [.\node[draw,circle,inner sep=1pt,minimum size=0pt]{$d^2$}; 
+		                	[.\node(f)[draw,circle,inner sep=1pt,minimum size=0pt]{$f^2$}; ]
+		                	[.\node[draw,circle,inner sep=1pt,minimum size=0pt]{$g^2$}; ]
+		                ]
+		                [.$j^2$ ] 
+		            ]
+		          ]
+		\end{scope}
+
+
+
+	    \begin{scope}[xshift=\partOffsetTwo]
+	    	\node (x) at (\FXOffset, \FYOffset) {$C_{TO}(d_1,d_2) = 5$};
+		    \node (x) at (\laXOffset, \laYOffset) {$T_1$};
+		    \Tree [.\node[draw]{$a^1$};
+		            [.$b^1$ ] 
+		            [.\node[draw]{$c^1$}; 
+		                [.\node[draw]{$d^1$}; 
+		                	[.\node(f)[draw]{$f^1$}; ]
+		                	[.\node[draw]{$g^1$}; ]
+		                ]
+		                [.$e_1^1$ ] 
+		            ]
+		          ]
+		    \node (ph1) at (0.6,-1.95) {\phantom{X}};
+		    \node[draw,dotted,fit=(f)(ph1)]{};
+	    \end{scope}
+
+		\begin{scope}[xshift=\partOffsetTwo + \commOffset]
+		    \node (y) at (\laXOffset, \laYOffset) {$T_2$} ;
+		    \Tree [.\node[draw]{$a^2$};
+		            [.$h^2$ 
+		            	[.$k^2$ ]
+		            ] 
+		            [.\node[draw]{$c^2$}; 
+		                [.\node[draw]{$d^2$}; 
+		                	[.\node(f)[draw]{$f^2$}; ]
+		                	[.\node[draw]{$g^2$}; ]
+		                ]
+		                [.$j^2$ ] 
+		            ]
+		          ]
+		    \node (ph1) at (0.6,-1.95) {\phantom{X}};
+		    \node[draw,dotted,fit=(f)(ph1)]{};
+		\end{scope}
+
+
+
+
+	\end{tikzpicture}
+\end{document} 

@@ -1,0 +1,95 @@
+\documentclass{standalone}
+\usepackage{tikz}
+\usepackage{tikz-qtree}
+\usepackage[makeroom]{cancel}
+\usepackage[T2A,T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[english,russian]{babel}
+\usetikzlibrary{fit}
+
+
+\begin{document} 
+	\begin{tikzpicture}[]
+	
+			\node (to1) at (1.7,1) {Tree Overlapping (базовый)};
+			\node (sto1) at (1.9,-3.9) {$C_{TO}(d_1,d_2) = 1$};
+		    \node (x) at (-1,0.5) {$T_1$};
+		    \Tree [.$a^1$
+		            [.$b^1$ ] 
+		            [.$c^1$ 
+		                [.\node[draw]{$d^1$}; 
+		                	[.\node(f){$f^1$}; ]
+		                	[.$g^1$ ]
+		                ]
+		                [.$e_1^1$ ] 
+		            ]
+		          ]
+		    \node (ph1) at (0.6,-1.95) {\phantom{X}};
+		    \node[draw,dotted,fit=(f)(ph1)]{};
+
+	    
+
+	    \begin{scope}[xshift=3cm]
+		    \node (y) at (-1,0.5) {$T_2$} ;
+		    \Tree [.$a^2$
+		            [.$h^2$ 
+		            	[.$k^2$ ]
+		            ] 
+		            [.$c^2$ 
+		                [.\node[draw]{$d^2$}; 
+		                	[.\node(f){$f^2$}; ]
+		                	[.$g^2$ ]
+		                ]
+		                [.$j^2$ ] 
+		            ]
+		          ]
+		    \node (ph1) at (0.6,-1.95) {\phantom{X}};
+		    \node[draw,dotted,fit=(f)(ph1)]{};
+
+		    %\node (arrow1) at (2.2,-1.2) {$\Rightarrow$};
+	    \end{scope}
+
+
+
+	    \begin{scope}[xshift=7.0cm]
+	    	\node (to2) at (1.7,1) {Tree Overlapping (модификация)};
+	    	\node (sto2) at (1.9,-3.9) {$C_{TO}^{''}(d_1,d_2) = 5$};
+		    \node (x) at (-1,0.5) {$T_1$};
+		    \Tree [.\node[draw,dashed]{$a^1$};
+		            [.$b^1$ ] 
+		            [.\node[draw,dashed]{$c^1$}; 
+		                [.\node[draw]{$d^1$}; 
+		                	[.\node(f)[draw]{$f^1$}; ]
+		                	[.\node[draw]{$g^1$}; ]
+		                ]
+		                [.$e_1^1$ ] 
+		            ]
+		          ]
+		    \node (ph1) at (0.6,-1.95) {\phantom{X}};
+		    \node[draw,dotted,fit=(f)(ph1)]{};
+	    \end{scope}
+
+
+		\begin{scope}[xshift=10cm]
+		    \node (y) at (-1,0.5) {$T_2$} ;
+		    \Tree [.\node[draw,dashed]{$a^2$};
+		            [.$h^2$ 
+		            	[.$k^2$ ]
+		            ] 
+		            [.\node[draw,dashed]{$c^2$}; 
+		                [.\node[draw]{$d^2$}; 
+		                	[.\node(f)[draw]{$f^2$}; ]
+		                	[.\node[draw]{$g^2$}; ]
+		                ]
+		                [.$j^2$ ] 
+		            ]
+		          ]
+		    \node (ph1) at (0.6,-1.95) {\phantom{X}};
+		    \node[draw,dotted,fit=(f)(ph1)]{};
+		\end{scope}
+
+
+
+
+	\end{tikzpicture}
+\end{document} 

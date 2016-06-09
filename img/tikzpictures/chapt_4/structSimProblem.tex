@@ -1,0 +1,59 @@
+\documentclass{standalone}
+\usepackage{tikz}
+\usepackage{tikz-qtree}
+\usepackage[makeroom]{cancel}
+\usetikzlibrary{fit}
+
+
+\begin{document} 
+	\begin{tikzpicture}[sibling distance=1.2pt]
+	\tikzset{level 1/.style={level distance=2.1\baselineskip}}
+	\tikzset{level 2/.style={level distance=1.7\baselineskip}}
+	\tikzset{level 3+/.style={level distance=1.4\baselineskip}}
+
+	    \node (x) at (2.0,0.9) {$T(\sqrt{2}\sin (\frac{3\pi}{2} - x)\sin x = \cos x)$};
+	    \Tree [.\node[]{math};
+	    		[.\node[draw]{mrow}; 
+	    			[.\node[]{msqrt}; 
+	    				[.\node[]{mn};
+	    					[.\node[]{$2$}; ]
+	    				]
+	    			]
+	    		]
+	    		[.\node[draw]{mi}; \node[]{$sin$}; ]
+	    		[.\node[draw](m2){mrow}; \node[]{\dots}; ]
+	    		[.\node[draw]{mi}; \node[]{$sin$}; ]
+	    		[.\node[draw]{mi}; \node[]{$x$}; ]
+	    		[.\node[draw]{mo}; \node[]{$=$ };]
+	    		[.\node[draw]{mi}; \node[]{$cos$}; ]
+	    		[.\node[draw]{mi}; \node[]{$x$}; ]
+	          ]
+	    
+
+
+
+		\begin{scope}[yshift=-4.0cm]
+			\tikzset{level 1/.style={level distance=2.1\baselineskip}}
+			\tikzset{level 2+/.style={level distance=1.7\baselineskip}}
+		    \node (x) at (2,0.9) {$T(-\sqrt{2}\sin (-\frac{5\pi}{2} + x)\sin x = \cos x)$};
+		    \Tree [.\node[]{math};
+		    		[.\node[]{mo}; \node[]{$-$ };]
+		    		[.\node[draw]{mrow};
+		    			[.msqrt 
+		    				[.mn
+		    					[.$2$ ]
+		    				]
+		    			]
+		    		]
+		    		[.\node[draw]{mi}; \node[]{$sin$}; ]
+		    		[.\node[draw]{mrow}; \node[]{\dots}; ]
+		    		[.\node[draw]{mi}; \node[]{$sin$}; ]
+		    		[.\node[draw]{mi}; \node[]{$x$}; ]
+		    		[.\node[draw]{mo}; \node[]{$=$ };]
+		    		[.\node[draw]{mi}; \node[]{$cos$}; ]
+		    		[.\node[draw]{mi}; \node[]{$x$}; ]
+		          ]
+		\end{scope}
+
+	\end{tikzpicture}
+\end{document} 

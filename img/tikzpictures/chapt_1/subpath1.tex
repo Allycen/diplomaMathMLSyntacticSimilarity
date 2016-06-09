@@ -1,0 +1,89 @@
+\documentclass{standalone}
+\usepackage{tikz}
+\usepackage{tikz-qtree}
+\usepackage[makeroom]{cancel}
+\usepackage[T2A,T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[english,russian]{babel}
+\usetikzlibrary{fit}
+
+
+\begin{document} 
+	\begin{tikzpicture}
+	\tikzset{level 1+/.style={level distance=2.5\baselineskip}}
+
+	    \node (x) at (-0.8,0.5) {$T_0$};
+	    \Tree [.$a_1^0$
+	            [.$b_1^0$
+	                [.$d_1^0$ ]
+	                [.$e_1^0$ ] 
+	            ] 
+	            [.$c_1^0$ ]
+	          ]
+	    
+
+	    \begin{scope}[xshift=2.2cm]
+	    \node (y) at (-0.8,0.5) {$T_1$};
+	    \tikzset{edge from parent/.style={very thick,draw}}
+	    \Tree [.$a_1^1$
+	            [.$b_1^1$
+	                [.$d_1^1$ ]
+	                [.$e_1^1$ 
+	                	[.$g_1^1$ 
+	                		[.$i_1^1$ ]
+	                	]
+	                ] 
+	            ] 
+	            [.$c_1^1$ ]
+	          ]
+	    \end{scope}
+
+
+	    \begin{scope}[xshift=8.0cm, yshift=-1.7cm]
+
+		\def\arraystretch{1.6}
+
+	    \node (common) at (0,0) 
+	    {
+			\begin{tabular}{l}
+				$(a),(b),(c),(d),(e)$ \\
+				$(a,b), (a,c), (b,d), (b,e)$ \\
+				$(a,b,d), (a,b,e)$ \\
+				\\
+				\\
+			\end{tabular}
+	    };
+
+
+		\node (t1) at (4,0) 
+	    {
+			\begin{tabular}{l}
+				$(g),(i)$ \\
+				$(e,g), (g,i)$ \\
+				$(b,e,g), (e,g,i)$ \\
+				$(a,b,e,g), (b,e,g,i)$ \\
+				$(a,b,e,g,i)$ \\
+			\end{tabular}
+	    };
+	    % подгоняем размеры и расположение квадратиков
+	    \newcommand{\xF}{-2.1}
+	    \newcommand{\yF}{-1.9}
+	    \newcommand{\width}{7.8}
+	    \newcommand{\height}{3.7}
+		\newcommand{\offsetX}{-2.1}
+		\newcommand{\offsetY}{0.1}
+
+		\newcommand{\xS}{\xF + \offsetX}
+	    \newcommand{\yS}{\yF + \offsetY}
+
+	    \draw [very thick](\xF,\yF) rectangle (\xF + \width, \yF + \height);
+	    \draw [](\xS,\yS) rectangle (\xS + \width -1.5, \yS + \height);
+
+
+
+	    \node (label1) at (-1.1,2.2) {Подпути дерева $T_0$};
+	    \node (label2) at (2,-2.2) {Подпути дерева $T_1$};
+	    \end{scope}
+
+	\end{tikzpicture}
+\end{document} 

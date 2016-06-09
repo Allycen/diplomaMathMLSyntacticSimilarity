@@ -1,0 +1,57 @@
+\documentclass{standalone}
+\usepackage{tikz}
+\usepackage{tikz-qtree}
+\usepackage[makeroom]{cancel}
+\usetikzlibrary{fit}
+
+
+\begin{document} 
+	\begin{tikzpicture}[sibling distance=7pt]
+	%\tikzset{frontier/.style={distance from root=6\baselineskip}}
+	\tikzset{level 1+/.style={level distance=2.5\baselineskip}}
+
+	    \node (x) at (-1.2,0.5) {$T_0$} ;
+	    \Tree [.$a_1^0$
+	            [.$b_1^0$
+	                [.$d_1^0$ ]
+	                [.$e_1^0$ ] 
+	            ] 
+	            [.$c_1^0$ ]
+	          ]
+	    
+
+	    \begin{scope}[xshift=4.0cm]
+	    \node (y) at (-1.2,0.5) {$T_1$} ;
+	    \Tree [.$a_1^1$
+	            [.$b_1^1$
+	                [.$d_1^1$ ]
+	                [.$e_1^1$ 
+	                	[.$g_1^1$ 
+	                		[.$i_1^1$ ]
+	                	]
+	                ] 
+	            ] 
+	            [.$c_1^1$ ]
+	          ]
+	    \end{scope}
+
+
+	    \begin{scope}[xshift=8.0cm]
+	    \node (z) at (-1.2,0.5) {$T_2$} ;
+	    \Tree [.$a_1^2$
+	            [.$g_1^2$
+	                [.$i_1^2$ ]
+	            ]  
+	            [.$b_1^2$
+	            	[.$d_1^2$ ]
+	            	[.$e_1^2$ 
+	            		[.$g_2^2$ 
+	            			[.$j_1^2$ ]
+	            		]
+	            	]
+	            ]
+	          ]
+	    \end{scope}
+
+	\end{tikzpicture}
+\end{document} 

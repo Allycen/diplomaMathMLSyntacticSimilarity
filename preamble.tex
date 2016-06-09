@@ -1,0 +1,68 @@
+
+\documentclass[%
+  a5paper,
+  subf,
+  href,
+  master,
+  dotsinheaders
+]{csse-fcs}
+
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[english,russian]{babel}
+
+% Компактные списки
+\usepackage{mdwlist}
+
+% Таблицы
+\usepackage{array}
+
+% Листинги
+\usepackage{listings}
+
+% Листинги
+\usepackage{longtable}
+
+% TODOs
+\usepackage[%
+  colorinlistoftodos,
+  shadow
+]{todonotes}
+
+% Путь к каталогу со всеми рисунками
+\graphicspath{{fig/}}
+
+% Автоконвертер для EPS
+\usepackage{epstopdf}
+
+% Генератор текста
+\usepackage{blindtext}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% многострочные подчеркивания текста
+\usepackage{soul}
+
+% книжные таблицы
+\usepackage{booktabs}
+
+\newcommand*\circled[1]{\tikz[baseline=(char.base)]{
+            \node[shape=circle,draw,inner sep=2pt] (char) {#1};}}
+
+% для закрашивания квадратика в mathmode
+\usepackage{xcolor}
+\usepackage{etoolbox}
+
+      \newcommand\mB[2][]{\tikz[baseline=(char.base)]\node[minimum width=0.5em,text height=1.3ex, text depth=0.3ex,fill=black!15,text=black,#1](char){$#2$};}%
+      \newcommand\mBH[2][]{\tikz[baseline=(char.base)]\node[minimum width=2em,text height=1.7ex, text depth=0.5ex,fill=black!15,text=black,#1](char){$#2$};}%
+      \newcommand\mBL[2][]{\tikz[baseline=(char.base)]\node[minimum width=0.4em,text height=1.0ex, text depth=0.1ex,fill=black!15,text=black,#1](char){$#2$};}%
+
+% для поворота картинки и надписи на 90 градусов
+\usepackage{rotating}
+
+% backslash в math моде
+\newcommand{\bSL}{\texttt{\textbackslash}}
+
+
+% чтобы не было лишних остступов в листинге
+\usepackage{lstautogobble}

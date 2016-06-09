@@ -1,0 +1,43 @@
+\documentclass{standalone}
+\usepackage{tikz}
+\usepackage{tikz-qtree}
+\usepackage[makeroom]{cancel}
+\usetikzlibrary{fit}
+
+% ОПИСАНИЕ: рекурсивный поиск схожести подвыражений
+\begin{document} 
+	\begin{tikzpicture}[level distance=1.3cm]
+
+	    \node (x) at (-1,0.5) {$T_0$} ;
+	    \Tree [.$a^0$
+	            [.$b^0$
+	                [.$d^0$ ] 
+	                [.$e^0$ ] 
+	            ] 
+	            [.$c^0$ ]
+	          ]
+	          
+	    \begin{scope}[xshift=3.5cm]
+	    \node (x) at (-1,0.5) {$T_1$} ;
+	    \Tree [.$a^1$
+	            [.$b^1$
+	                [.$d^1$ ] 
+	                [.$e^1$ ] 
+	            ] 
+	            [.$f^1$ ]
+	          ]
+	    \end{scope}
+
+	    \begin{scope}[xshift=7cm]
+	    \node (x) at (-1,0.5) {$T_2$} ;
+	    \Tree [.$a^2$
+	            [.$b^2$
+	                [.$f^2$ ] 
+	                [.$g^2$ ] 
+	            ] 
+	            [.$c^2$ ]
+	          ]
+	    \end{scope}
+
+	\end{tikzpicture}
+\end{document} 

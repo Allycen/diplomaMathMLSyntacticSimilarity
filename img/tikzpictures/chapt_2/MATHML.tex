@@ -1,0 +1,26 @@
+\documentclass{standalone}
+\usepackage{tikz}
+\usepackage{tikz-qtree}
+\usepackage[makeroom]{cancel}
+\usetikzlibrary{fit}
+
+% ОПИСАНИЕ: модификация старого алгоритма tree overlap чтобы покрывать все деревья 
+\begin{document} 
+	\begin{tikzpicture}[sibling distance=9.5pt]
+	\tikzset{every tree node/.style={align=center,anchor=base}}
+	\tikzset{level 1+/.style={level distance=2\baselineskip}}
+	\tikzset{frontier/.style={distance from root=6\baselineskip}}
+
+	
+	    \Tree [.mrow
+	            [.mo
+	                $sin$  ] 
+	            [.mrow
+	                [.mo $($ ]
+	                [.mi $x$ ]
+	                [.mo $)$ ] ]]
+	    
+	
+
+	\end{tikzpicture}
+\end{document} 

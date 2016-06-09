@@ -1,0 +1,47 @@
+\input{preamble}
+
+
+\begin{document}
+
+	\input{settings}
+	%\listoftodos
+	%\clearpage
+
+	\input{title}
+
+	\makecover
+	\maketitle
+
+	\input{Disser/introTask}
+	\input{Disser/abstract}
+	\makeabstract
+
+	\tableofcontents
+
+	\makenomenclature
+	\printnomenclature
+
+	
+	\input{Disser/intro}
+	\input{Disser/dictionary}
+	\input{Disser/chapter1}
+	\input{Disser/chapter2}
+	\input{Disser/chapter3}
+	\input{Disser/chapter4}
+	\input{Disser/conclusion}
+
+
+	\bibliography{thesis}
+	\bibliographystyle{ugost2008}	
+	\addtocounter{pagesWithoutAppendix}{
+		\value{page}}
+
+	\appendix
+	\input{Disser/appendix}
+
+	\addtocounter{pagesOnlyAppendix}{
+		\value{page} - \value{pagesWithoutAppendix}}
+
+
+
+\end{document}

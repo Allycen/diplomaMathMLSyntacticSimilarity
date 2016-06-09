@@ -1,0 +1,93 @@
+\documentclass{standalone}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[french]{babel}
+\usepackage{fancyvrb}
+\usepackage{../../tikz-uml}
+\usetikzlibrary{positioning}
+
+
+\begin{document}
+  
+  \begin{tikzpicture}
+  \newcommand{\pl}{\raisebox{.4\height}{\scalebox{.6}{+ }}}
+ 
+
+
+  \umlclass[x=10,y=0]{SearchEngine<T>}{
+    - corpusIdxTable : List<PRwithIdxNodes<T{>}>\\
+    - queryIdxTable : List<PRwithIdxNodes<T{>}>\\
+    - queryTree : MathMLTree<T>\\
+    - corpusTrees : List<MathMLTree<T>{>}\\
+    - StoList : List<Sto>\\
+  }{
+    \pl setQueryTree(qTr : MathMLTree<>)\\
+    \pl addCorpusTree(cTr : MathMLTree<>)\\
+    \pl addTrToIdxTable(tr : MathMLTree<>, \\
+          \quad\quad idxTable List<PRwithIdxNodes<{>}>)\\
+    \pl calculateCtoList()\\
+    \pl calculateStructSim()\\
+    \pl calculateSubExprSim()\\
+  }
+
+  
+  \umlclass[x=0, y=0]{PRwithIdxNodes<T>}{
+    - PR : ProductionRule<T>\\
+    - idxNodes : List<IdxNode<T{>}>\\
+  }{
+    \pl addTopCorpusTreeNode(node : IdxNode<>)
+  }
+
+  \umlclass[x=-1.5, y=-6]{IdxNode<T>}{
+    - label : <T>\\
+    - treeID : int\\
+    - repeatID : int\\
+    - leavesCount : int\\
+    - breadthPosInTr : int\\
+  }{
+     \pl IdxNode(node : TreeNode)
+  }
+
+  \umlclass[x=4.8, y=-6]{ProductionRule<T>}{
+    - topNode : <T>\\
+    - children : List<T>\\
+  }{
+    \pl ProductionRule(node : TreeNode)
+  }
+
+
+  \umlclass[x=19.5, y=0]{MathMLTree<T>}{
+    - label : <T>\\
+    - treeID : int\\
+  }{
+    \pl fromNode(node : Node) : MathMLTree<>\\
+    \pl normalizeTree()
+  }
+
+  \umlclass[x=13.5, y=-6]{Sto}{
+    - tr1 : MathMLTree<>\\
+    - tr2 : MathMLTree<>\\
+    - commonPart : MathMLTree<>\\
+  }{
+    \pl Sto(tr1 : MathMLTree<>, tr2 : MathMLTree<>)\\
+    \pl simValue() : double\\
+    \pl numCommonNodes : int\\
+  }
+
+  
+
+
+  \umlaggreg[mult1=*,mult2=1, pos2=0.25, pos1=0.9, angle1=30, angle2=60, loopsize=2cm]{PRwithIdxNodes<T>}{IdxNode<T>}
+  \umlaggreg[mult1=1,mult2=1, pos2=0.15, pos1=0.8, angle1=30, angle2=60, loopsize=2cm]{PRwithIdxNodes<T>}{ProductionRule<T>}
+  \umlaggreg[mult1=*,mult2=1, pos2=0.15, pos1=0.8, angle1=30, angle2=60, loopsize=2cm]{SearchEngine<T>}{PRwithIdxNodes<T>}
+  \umlaggreg[mult1=*,mult2=1, pos2=0.15, pos1=0.8, angle1=30, angle2=60, loopsize=2cm]{SearchEngine<T>}{MathMLTree<T>}
+
+  \umlunicompo[geometry=--, mult1=*, pos1=0.9, mult2=1, pos2=0.2]{MathMLTree<T>}{Sto}
+
+\umlassoc[geometry=--,  mult1=1, pos1=0.1, align1=right, mult2=*, pos2=0.55]{SearchEngine<T>}{Sto}
+
+
+  \end{tikzpicture}
+  
+\end{document}

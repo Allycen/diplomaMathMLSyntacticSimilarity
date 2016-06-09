@@ -1,0 +1,102 @@
+\documentclass{standalone}
+\usepackage{tikz}
+\usepackage{tikz-qtree}
+\usepackage[makeroom]{cancel}
+\usepackage[T2A,T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[english,russian]{babel}
+\usetikzlibrary{fit}
+
+
+\begin{document} 
+	\begin{tikzpicture}
+	\tikzset{level 1+/.style={level distance=2.5\baselineskip}}
+
+	    \node (x) at (-0.8,0.5) {$T_0$};
+	    \Tree [.$a_1^0$
+	            [.$b_1^0$
+	                [.$d_1^0$ ]
+	                [.$e_1^0$ ] 
+	            ] 
+	            [.$c_1^0$ ]
+	          ]
+	    
+
+	    \begin{scope}[xshift=2.2cm]
+	    \node (y) at (-0.8,0.5) {$T_2$};
+	    \tikzset{edge from parent/.style={very thick,draw}}
+	    \Tree [.$a_1^2$
+	            [.$g_1^2$
+	                [.$i_1^2$ ]
+	            ]  
+	            [.$b_1^2$
+	            	[.$d_1^2$ ]
+	            	[.$e_1^2$ 
+	            		[.$g_2^2$ 
+	            			[.$j_1^2$ ]
+	            		]
+	            	]
+	            ]
+	          ]
+	    \end{scope}
+
+
+	    \begin{scope}[xshift=8.2cm, yshift=-1.7cm]
+
+		\def\arraystretch{1.6}
+
+	    \node (common) at (0,0) 
+	    {
+			\begin{tabular}{l}
+				$(a),(b),(d),(e)$ \\
+				$(a,b), (b,d), (b,e)$ \\
+				$(a,b,d), (a,b,e)$ \\
+				\\
+				\\
+			\end{tabular}
+	    };
+
+		\node (t1) at (-3.4,0) 
+	    {
+			\begin{tabular}{l}
+				$(c)$ \\
+				$(a,c)$ \\
+				\\
+				\\
+				\\
+			\end{tabular}
+	    };
+
+
+		\node (t2) at (4,0) 
+	    {
+			\begin{tabular}{l}
+				$(g),(i), (j)$ \\
+				$(a,g), (g,i), (e,g),(g,j)$ \\
+				$(a,g,i), (b,e,g), (e,g,j)$ \\
+				$(a,b,e,g), (b,e,g,j)$ \\
+				$(a,b,e,g,j)$ \\
+			\end{tabular}
+	    };
+	    % подгоняем размеры и расположение квадратиков
+	    \newcommand{\xF}{-1.6}
+	    \newcommand{\yF}{-1.9}
+	    \newcommand{\width}{7.6}
+	    \newcommand{\height}{3.7}
+		\newcommand{\offsetX}{-2.5}
+		\newcommand{\offsetY}{0.1}
+
+		\newcommand{\xS}{\xF + \offsetX}
+	    \newcommand{\yS}{\yF + \offsetY}
+
+	    \draw [very thick](\xF,\yF) rectangle (\xF + \width, \yF + \height);
+	    \draw [](\xS,\yS) rectangle (\xS + \width -2.0, \yS + \height);
+
+
+
+	    \node (label1) at (-1.1,2.2) {Подпути дерева $T_0$};
+	    \node (label2) at (2,-2.2) {Подпути дерева $T_2$};
+	    \end{scope}
+
+	\end{tikzpicture}
+\end{document} 

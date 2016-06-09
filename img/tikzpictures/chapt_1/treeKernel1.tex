@@ -1,0 +1,213 @@
+\documentclass{standalone}
+\usepackage{tikz}
+\usepackage{tikz-qtree}
+\usepackage[makeroom]{cancel}
+\usepackage[T2A,T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[english,russian]{babel}
+\usetikzlibrary{fit}
+
+
+
+
+\begin{document} 
+	\begin{tikzpicture}
+
+% отступ от деревьев
+\newcommand{\offsetF}{2.7cm}
+% отступ между поддеревьями
+\newcommand{\offset}{1.8cm}
+
+
+% отступы у label поддерева 
+\newcommand{\loffsetX}{-0.55}
+\newcommand{\loffsetY}{0.4}
+
+% отступы у label дерева 
+\newcommand{\ltoffsetX}{-0.8}
+\newcommand{\ltoffsetY}{0.4}
+
+% отступы между строками
+\newcommand{\edgeOffset}{0.7cm}
+\newcommand{\downOffset}{-3.9cm}
+\newcommand{\downOffsetS}{-5.2cm}
+
+%отступ у названий секций поддеревьев
+\newcommand{\nameOffsetX}{3}
+\newcommand{\nameOffsetY}{1.2}
+
+
+
+
+		\node (phantom) at (\ltoffsetX,\ltoffsetY + \edgeOffset) {\phantom{a}};
+	    \node (x) at (\ltoffsetX,\ltoffsetY) {$T_0$};
+	    %\tikzset{edge from parent/.style={very thick,draw}}
+	    \Tree [.$a$
+	            [.$b$
+	                [.$d$ ]
+	                [.$e$ ] 
+	            ] 
+	            [.$c$ ]
+	          ]
+	    
+
+			\begin{scope}[xshift=\offsetF]
+			%\node (label1) at (\nameOffsetX, \nameOffsetY) {Поддеревья дерева $T_0$};
+
+			\node (sf1) at (\loffsetX,\loffsetY) {1.};
+		    \Tree [.\node(a){$a$};
+		            [.$b$
+		                [.\node(d){$d$}; ]
+		                [.$e$ ] 
+		            ] 
+		            [.\node(c){$c$}; ]
+		          ]
+		    \node[draw,dashed,fit=(a)(c)(d)(sf1)]{};
+			\end{scope}
+
+			\begin{scope}[xshift=\offsetF + \offset]
+			\node (sf2) at (\loffsetX,\loffsetY) {2.};
+		    \Tree [.$a$
+		            [.$b$ ] 
+		            [.\node(c){$c$}; ]
+		          ]
+		    \node[draw,dashdotted,fit=(c)(sf2)]{};
+			\end{scope}
+
+			\begin{scope}[xshift=\offsetF + \offset * 2]
+			\node (sf3) at (\loffsetX,\loffsetY) {3.};
+		    \Tree [.$b$
+		            [.$d$ ] 
+		            [.\node(e){$e$}; ]
+		          ]
+			\node[draw,loosely dashdotted,fit=(e)(sf3)]{};
+			\end{scope}
+
+
+
+	    \begin{scope}[yshift=\downOffset]
+	    \node (y) at (\ltoffsetX, \ltoffsetY) {$T_1$} ;
+	    %\tikzset{edge from parent/.style={very thick,draw}}
+	    \Tree [.$a$
+	            [.$b$
+	                [.$d$ ]
+	                [.$e$ 
+	                	[.$g$ 
+	                		[.$i$ ]
+	                	]
+	                ] 
+	            ] 
+	            [.$c$ ]
+	          ]
+	    \end{scope}
+
+
+			\begin{scope}[xshift=\offsetF, yshift=\downOffset]
+			%\node (label1) at (\nameOffsetX, \nameOffsetY) {Поддеревья дерева $T_1$};
+
+			\node (ss1) at (\loffsetX,\loffsetY) {1.};
+		    \Tree [.$a$
+		            [.$b$
+		                [.$d$ ]
+		                [.$e$ 
+		                	[.$g$ 
+		                		[.$i$ ]
+		                	]
+		                ] 
+		            ] 
+		            [.$c$ ]
+		          ]
+			\end{scope}
+
+			\begin{scope}[xshift=\offsetF + \offset, yshift=\downOffset]
+			\node (ss2) at (\loffsetX,\loffsetY) {2.};
+		    \Tree [.$a$
+		            [.$b$
+		                [.$d$ ]
+		                [.$e$ 
+		                	[.$g$ ]
+		                ] 
+		            ] 
+		            [.$c$ ]
+		          ]
+			\end{scope}
+
+			\begin{scope}[xshift=\offsetF + \offset * 2, yshift=\downOffset]
+			\node (ss3) at (\loffsetX,\loffsetY) {3.};
+		    \Tree [.\node(a){$a$};
+		            [.$b$
+		                [.\node(d){$d$}; ]
+		                [.$e$ ] 
+		            ] 
+		            [.\node(c){$c$}; ]
+		          ]
+			\node[draw,dashed,fit=(a)(c)(d)(ss3)]{};
+			\end{scope}
+
+			\begin{scope}[xshift=\offsetF + \offset * 3, yshift=\downOffset]
+			\node (ss4) at (\loffsetX,\loffsetY) {4.};
+		    \Tree [.$a$
+		            [.$b$ ] 
+		            [.\node(c){$c$}; ]
+		          ]
+		    \node[draw,dashdotted,fit=(c)(ss4)]{};
+			\end{scope}
+
+			\begin{scope}[xshift=\offsetF + \offset * 4, yshift=\downOffset]
+			\node (ss5) at (\loffsetX,\loffsetY) {5.};
+	    	\Tree [.$b$
+	                [.$d$ ]
+	                [.$e$ 
+	                	[.$g$ 
+	                		[.$i$ ]
+	                	]
+	                ] 
+	              ] 
+			\end{scope}
+
+			\begin{scope}[xshift=\offsetF, yshift=\downOffset + \downOffsetS]
+			\node (ss6) at (\loffsetX,\loffsetY) {6.};
+	    	\Tree [.$b$
+	                [.$d$ ]
+	                [.$e$ 
+	                	[.$g$ ]
+	                ] 
+	              ] 
+			\end{scope}
+
+			\begin{scope}[xshift=\offsetF + \offset, yshift=\downOffset + \downOffsetS]
+			\node (ss7) at (\loffsetX,\loffsetY) {7.};
+		    \Tree [.$b$
+		            [.$d$ ] 
+		            [.\node(e){$e$}; ]
+		          ]
+			\node[draw,loosely dashdotted,fit=(e)(ss7)]{};
+			\end{scope}
+
+			\begin{scope}[xshift=\offsetF + \offset * 2, yshift=\downOffset + \downOffsetS]
+			\node (ss8) at (\loffsetX,\loffsetY) {8.};
+	    	\Tree [.$e$ 
+	                	[.$g$ 
+	                		[.$i$ ]
+	                	]
+	              ] 
+
+			\end{scope}
+
+			\begin{scope}[xshift=\offsetF + \offset * 3, yshift=\downOffset + \downOffsetS]
+			\node (ss9) at (\loffsetX,\loffsetY) {9.};
+	    	\Tree [.$e$ 
+	                	[.$g$ ]
+	              ] 
+			\end{scope}
+
+			\begin{scope}[xshift=\offsetF + \offset * 4, yshift=\downOffset + \downOffsetS]
+			\node (ss10) at (\loffsetX,\loffsetY) {10.};
+	    	\Tree [.$g$ 
+	                	[.$i$ ]
+	              ] 
+			\end{scope}
+
+
+	\end{tikzpicture}
+\end{document} 

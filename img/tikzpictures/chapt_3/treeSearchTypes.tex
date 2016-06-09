@@ -1,0 +1,56 @@
+\documentclass{standalone}
+\usepackage{tikz}
+\usepackage{tikz-qtree}
+\usepackage[makeroom]{cancel}
+\usepackage[T2A,T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[english,russian]{babel}
+\usetikzlibrary{fit}
+
+
+\begin{document} 
+	\begin{tikzpicture}[every tree node/.style={draw,circle},
+						sibling distance=12pt,
+						level distance=2.1\baselineskip]
+
+		    %\node (x) at (0,0.7) {Обход дерева в ширину};
+		    \Tree [.1 
+		    		[.2 
+		    			[.5 
+		    				[.9 ]
+		    			]
+		    		]
+		    		[.3 
+		    			[.6 
+		    				[.10 ]
+		    			]
+		    			[.7 ]
+		    		]
+		    		[.4 
+		    			[.8 ]
+		    		]
+		    	  ]
+	    
+
+	    \begin{scope}[xshift=5.0cm]
+		    %\node (x) at (0,0.7) {Обход дерева в глубину};
+		    \Tree [.1 
+		    		[.2 
+		    			[.3 
+		    				[.4 ]
+		    			]
+		    		]
+		    		[.5 
+		    			[.6 
+		    				[.7 ]
+		    			]
+		    			[.8 ]
+		    		]
+		    		[.9 
+		    			[.10 ]
+		    		]
+		    	  ]
+	    \end{scope}
+
+	\end{tikzpicture}
+\end{document} 
