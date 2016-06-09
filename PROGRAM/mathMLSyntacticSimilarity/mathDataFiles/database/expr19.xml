@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE math PUBLIC "-//W3C//DTD MathML 2.0//EN" "http://www.w3.org/TR/MathML2/dtd/mathml2.dtd">
+<math mode="display">
+<mrow>
+  <mfrac linethickness="1">
+    <mn>1</mn>
+    <mn>2</mn>
+  </mfrac>
+  <mi>sin</mi>
+  <mn>2</mn>
+  <mi>x</mi>
+  <mo>+</mo>
+  <mi>s</mi>
+  <mi>i</mi>
+  <msup>
+    <mi>n</mi>
+    <mn>2</mn>
+  </msup>
+  <mi>x</mi>
+  <mo>-</mo>
+  <mi>sin</mi>
+  <mi>x</mi>
+  <mo>=</mo>
+  <mi>cos</mi>
+  <mi>x</mi>
+</mrow>
+</math>

@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<!DOCTYPE math PUBLIC "-//W3C//DTD MathML 2.0//EN" "http://www.w3.org/TR/MathML2/dtd/mathml2.dtd">
+<math mode="display">
+
+  <mrow>
+  <mo>cos</mo>
+  <mrow>
+    <mo form="prefix">(</mo>
+    <mn>2</mn>
+    <mi>x</mi>
+    <mo form="postfix">)</mo>
+  </mrow>
+  </mrow>
+  <mo>=</mo>
+  <mrow>
+    <mo>sin</mo>
+    <mrow>
+      <mo form="prefix">(</mo>
+      <mi>x</mi>
+      <mo>+</mo>
+      <mfrac linethickness="1">
+        <mo>&#x003C0;</mo>
+        <mn>2</mn>
+      </mfrac>
+      <mo form="postfix">)</mo>
+    </mrow>
+  </mrow>
+
+</math>

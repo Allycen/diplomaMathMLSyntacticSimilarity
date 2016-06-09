@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<!DOCTYPE math PUBLIC "-//W3C//DTD MathML 2.0//EN" "http://www.w3.org/TR/MathML2/dtd/mathml2.dtd">
+<math mode="display">
+<mrow>
+  <msqrt>
+    <mn>2</mn>
+  </msqrt>
+  <mi>sin</mi>
+  <mrow>
+    <mo form="prefix">(</mo>
+    <mfrac linethickness="1">
+      <mrow>
+        <mn>3</mn>
+        <mi>&#x003C0;</mi>
+      </mrow>
+      <mn>2</mn>
+    </mfrac>
+    <mo>-</mo>
+    <mi>x</mi>
+    <mo form="postfix">)</mo>
+  </mrow>
+  <mi>sin</mi>
+  <mi>x</mi>
+  <mo>=</mo>
+  <mi>cos</mi>
+  <mi>x</mi>
+</mrow>
+</math>

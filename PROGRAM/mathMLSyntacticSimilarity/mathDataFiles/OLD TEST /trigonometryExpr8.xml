@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<!DOCTYPE math PUBLIC "-//W3C//DTD MathML 2.0//EN" "http://www.w3.org/TR/MathML2/dtd/mathml2.dtd">
+<math mode="display">
+
+  <mfrac linethickness="1">
+    <mrow>
+      
+        <mrow>
+          <mn>2</mn>
+          <mrow>
+            <mo>cos</mo>
+            <mrow>
+              <mo form="prefix">(</mo>
+              <mi>x</mi>
+              <mo form="postfix">)</mo>
+            </mrow>
+          </mrow>
+        </mrow>
+        <mo>+</mo>
+        <mn>1</mn>
+      
+    </mrow>
+    <mrow>
+      <mrow>
+        <mo>tan</mo>
+        <mrow>
+          <mo form="prefix">(</mo>
+          <mi>x</mi>
+          <mo form="postfix">)</mo>
+        </mrow>
+      </mrow>
+      <mo>-</mo>
+      <msqrt>
+        <mn>3</mn>
+      </msqrt>
+    </mrow>
+  </mfrac>
+  <mo>=</mo>
+  <mn>0</mn>
+
+</math>
